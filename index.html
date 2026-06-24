@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>PTM Lite + AI Workflow — Mid-Year Special</title>
+<meta name="description" content="PTM Lite เครื่องมือช่วยอ่านเทรนด์บน TradingView + ระบบคิดด้วย AI — รอบ Mid-Year ถึง 30 มิ.ย. 2026 แพ็กคู่ Workflow รับ PTM Lite แบบไม่มีวันหมดอายุ">
+
+<!-- =========================================================
+     TODO ก่อน publish (verify ทีละตัว — ห้าม assume / ห้ามก๊อปลิงก์ bump เดิม):
+     1. assets/ptm-lite-chart.png  → วางไฟล์รูปใน assets/ ข้าง index.html
+     2. https://buy.stripe.com/3cI00jdJlerI1Ra6JI5EY0n   → ลิงก์ใหม่ standalone 1,290 (license 1 ปี)
+     3. https://buy.stripe.com/fZu3cvdJl5VccvO0lk5EY0o    → ลิงก์ +workflow 2,180 (LIFETIME) — fulfillment ใหม่ อย่าใช้ลิงก์ PL2 เดิม
+     4. https://buy.stripe.com/28EfZh5cP3N4fI01po5EY0p      → ลิงก์ +workflow+ebook 2,480 (LIFETIME) — อย่าใช้ลิงก์ bJe...0l เดิม
+     5. ตรวจทุกลิงก์ที่ Stripe dashboard ว่าเก็บเงินตรงตัวเลข (เลข 990/1290/2480 ซ้ำหลายที่)
+     6. วันที่ Live (19 ก.ค. / 12 ก.ค.) — verify ก่อน publish
+     7. Line OA link สำหรับ Full Stack + add-on 990
+     ========================================================= -->
+
+<!-- Meta Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '936259682502763');
+  fbq('track', 'PageView');
+  fbq('track', 'ViewContent', {
+    content_ids: ['ptm_lite_midyear'],
+    content_type: 'product',
+    content_name: 'PTM Lite Mid-Year'
+  });
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=936259682502763&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* =====================================================
+   CSS Variables — MATCH funnel design system
+   ===================================================== */
+:root {
+  --navy:        #0D1B2A;
+  --navy-mid:    #152338;
+  --navy-light:  #1E3352;
+  --steel:       #2C4A6E;
+  --slate:       #4A6FA5;
+  --silver:      #8FA8C8;
+  --mist:        #C8D8EA;
+  --white:       #F5F8FC;
+  --gold:        #C9A84C;
+  --gold-bright: #E8C96B;
+  --gold-pale:   #F7E8B0;
+  --teal:        #1A9E8F;
+  --teal-bright: #22C5B3;
+  --red-warn:    #C0392B;
+  --text-main:   #E8EFF8;
+  --text-sub:    #9BAFCA;
+  --text-dim:    #5A7A9C;
+  --border:      rgba(100,150,200,0.15);
+  --border-gold: rgba(201,168,76,0.3);
+  --glow-teal:   0 0 40px rgba(26,158,143,0.3);
+  --glow-gold:   0 0 40px rgba(201,168,76,0.25);
+  --font-th:     'IBM Plex Sans Thai', sans-serif;
+  --font-mono:   'IBM Plex Mono', monospace;
+  --max-w:       760px;
+  --radius:      12px;
+  --radius-lg:   20px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font-th);
+  background: var(--navy);
+  color: var(--text-main);
+  line-height: 1.7;
+  font-size: 17px;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(100,150,200,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100,150,200,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+body > * { position: relative; z-index: 1; }
+
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
+.label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--teal-bright);
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+/* ===== PROMO STRIP (sticky top) ===== */
+.promo-strip {
+  background: linear-gradient(90deg, rgba(201,168,76,0.18), rgba(201,168,76,0.08));
+  border-bottom: 1px solid var(--border-gold);
+  padding: 11px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+  text-align: center;
+}
+.promo-strip-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  color: var(--gold-bright);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.promo-strip .dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--gold-bright);
+  animation: pulse 2s infinite;
+  flex-shrink: 0;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .promo-strip .dot { animation: none; }
+}
+
+/* ===== HERO ===== */
+.hero {
+  padding: 56px 0 36px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -120px; right: -160px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -150px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(26,158,143,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05));
+  border: 1px solid var(--border-gold);
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--gold-bright);
+  margin-bottom: 24px;
+}
+.hero-title {
+  font-size: clamp(28px, 6vw, 44px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 18px;
+  letter-spacing: -0.015em;
+}
+.hero-title span { color: var(--gold); }
+.hero-sub {
+  font-size: clamp(15px, 2.5vw, 18px);
+  color: var(--text-sub);
+  max-width: 620px;
+  line-height: 1.65;
+}
+.hero-sub strong { color: var(--text-main); font-weight: 600; }
+.hero-sub .life { color: var(--teal-bright); font-weight: 600; }
+
+/* ===== SECTION SHELL ===== */
+.section { padding: 14px 0 30px; }
+.section-head { text-align: center; margin-bottom: 26px; }
+.section-title {
+  font-size: clamp(21px, 4vw, 28px);
+  color: var(--white);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+.section-title span { color: var(--gold-bright); }
+
+/* ===== MECHANISM (chart) ===== */
+.mech-card {
+  background: linear-gradient(180deg, rgba(30,51,82,0.45), rgba(30,51,82,0.2));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+}
+.chart-wrap {
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 14px;
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.3);
+}
+.chart-wrap img { width: 100%; height: auto; display: block; }
+.chart-caption {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+.integrity {
+  margin-top: 18px;
+  background: rgba(26,158,143,0.08);
+  border: 1px solid rgba(26,158,143,0.3);
+  border-left: 3px solid var(--teal);
+  padding: 14px 18px;
+  border-radius: 0 8px 8px 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--mist);
+}
+.integrity strong { color: var(--white); font-weight: 600; }
+
+/* ===== SPLIT (two halves) ===== */
+.split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+@media (min-width: 640px) { .split { grid-template-columns: 1fr 1fr; } }
+.half {
+  background: rgba(30,51,82,0.35);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 20px;
+}
+.half-tag {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+.half.tool .half-tag { color: var(--teal-bright); }
+.half.flow .half-tag { color: var(--gold-bright); }
+.half h3 {
+  font-size: 18px;
+  color: var(--white);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.half p { font-size: 14.5px; color: var(--text-sub); line-height: 1.6; }
+.split-join {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+  margin-top: 16px;
+}
+
+/* ===== BENEFITS ===== */
+.benefits-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--teal-bright);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  text-align: center;
+}
+.benefits {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+@media (min-width: 600px) { .benefits { grid-template-columns: 1fr 1fr; } }
+.benefit {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: rgba(30,51,82,0.35);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+.benefit-icon {
+  flex-shrink: 0;
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--navy);
+  font-size: 16px;
+  font-weight: 700;
+}
+.benefit-text { font-size: 15px; line-height: 1.55; color: var(--text-sub); }
+.benefit-text strong { display: block; color: var(--white); font-weight: 600; margin-bottom: 2px; }
+
+/* ===== PRICING ===== */
+.plans {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.plan {
+  background: linear-gradient(180deg, rgba(30,51,82,0.4), rgba(30,51,82,0.2));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 26px 24px;
+  position: relative;
+}
+.plan-featured {
+  border: 1px solid var(--gold);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.4), 0 0 0 1px var(--border-gold);
+  margin-top: 14px;
+}
+.plan-featured::before {
+  content: '⭐ แนะนำ · คุ้มสุดสำหรับคนเริ่มใช้ AI เทรด';
+  position: absolute;
+  top: -13px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--teal);
+  color: var(--white);
+  padding: 5px 16px;
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(26,158,143,0.4);
+}
+.plan-name {
+  font-size: 18px;
+  color: var(--white);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.plan-name .plus { color: var(--gold-bright); }
+.plan-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.plan-price {
+  font-family: var(--font-mono);
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--gold-bright);
+  letter-spacing: -0.02em;
+}
+.plan-featured .plan-price { font-size: 38px; }
+.plan-unit { font-size: 14px; color: var(--text-sub); }
+.plan-license {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  padding: 5px 12px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+.lic-year {
+  background: rgba(100,150,200,0.1);
+  border: 1px solid var(--border);
+  color: var(--text-sub);
+}
+.lic-life {
+  background: rgba(26,158,143,0.15);
+  border: 1px solid var(--teal);
+  color: var(--teal-bright);
+}
+.plan-list { list-style: none; margin-bottom: 20px; }
+.plan-list li {
+  font-size: 14.5px;
+  color: var(--text-sub);
+  line-height: 1.5;
+  padding: 6px 0 6px 26px;
+  position: relative;
+}
+.plan-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0; top: 6px;
+  color: var(--teal-bright);
+  font-weight: 700;
+}
+.plan-list li.add { color: var(--mist); }
+.plan-list li.add::before { content: '＋'; color: var(--gold-bright); }
+.plan-cta {
+  display: block;
+  text-align: center;
+  padding: 18px 24px;
+  border-radius: var(--radius);
+  font-family: var(--font-th);
+  font-weight: 600;
+  font-size: 16px;
+  transition: transform 0.15s, box-shadow 0.2s;
+}
+.cta-gold {
+  background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+  color: var(--navy);
+  font-weight: 700;
+  box-shadow: 0 8px 32px rgba(201,168,76,0.35);
+}
+.cta-gold:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,168,76,0.5); }
+.cta-outline {
+  background: transparent;
+  border: 1px solid rgba(201,168,76,0.4);
+  color: var(--gold);
+}
+.cta-outline:hover { background: rgba(201,168,76,0.08); border-color: var(--gold); }
+
+/* ===== LIFETIME NOTE ===== */
+.life-note {
+  max-width: 560px;
+  margin: 22px auto 0;
+  background: rgba(201,168,76,0.06);
+  border: 1px dashed var(--border-gold);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--text-sub);
+}
+.life-note strong { color: var(--gold-bright); font-weight: 600; }
+.life-note .addon {
+  display: block;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  color: var(--mist);
+}
+.life-note .addon a { color: var(--teal-bright); border-bottom: 1px solid rgba(34,197,179,0.4); }
+
+/* ===== FULL STACK — thin exit line ===== */
+.fullstack-line {
+  max-width: 560px;
+  margin: 22px auto 0;
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--text-sub);
+  line-height: 1.6;
+  padding: 16px 22px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+}
+.fullstack-line strong { color: var(--mist); font-weight: 600; }
+.fullstack-line a { color: var(--teal-bright); border-bottom: 1px solid rgba(34,197,179,0.4); white-space: nowrap; }
+
+/* ===== FAQ (accordion) ===== */
+.faq { max-width: 620px; margin: 0 auto; }
+.faq-acc summary { font-size: 15.5px; color: var(--white); font-weight: 600; line-height: 1.45; }
+.faq-acc .faq-a { padding: 2px 18px 16px 18px; font-size: 14.5px; color: var(--text-sub); line-height: 1.6; }
+.faq-acc .faq-a strong { color: var(--mist); }
+.faq-acc .faq-a a { color: var(--teal-bright); }
+
+/* ===== ACCORDION (native details) ===== */
+.acc {
+  background: rgba(30,51,82,0.35);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.acc summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 15px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.acc summary::-webkit-details-marker { display: none; }
+.acc summary::after {
+  content: '+';
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  line-height: 1;
+  color: var(--gold-bright);
+  flex-shrink: 0;
+}
+.acc[open] summary::after { content: '\2212'; }
+.acc summary:focus-visible { outline: 2px solid var(--teal-bright); outline-offset: 2px; }
+
+/* ===== WORKFLOW SECTION ===== */
+.wf-cover {
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 22px;
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.3);
+}
+.wf-cover img { width: 100%; height: auto; display: block; }
+.wf-intro {
+  text-align: center;
+  font-size: 15px;
+  color: var(--text-sub);
+  line-height: 1.6;
+  max-width: 580px;
+  margin: 0 auto 22px;
+}
+.level-num {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gold-bright);
+  width: 28px;
+  flex-shrink: 0;
+}
+.level-head { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.level-name { font-size: 15px; font-weight: 600; color: var(--white); }
+.level-headline { font-size: 13px; color: var(--text-sub); line-height: 1.45; }
+.level-detail {
+  padding: 0 18px 16px 58px;
+  font-size: 14px;
+  color: var(--text-sub);
+  line-height: 1.6;
+}
+.level.core { border-color: var(--border-gold); }
+.level.core .level-name::after {
+  content: 'แกนหลัก';
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.03em;
+  color: var(--navy);
+  background: var(--gold-bright);
+  padding: 2px 7px;
+  border-radius: 100px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+.wf-core-note {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-dim);
+  font-style: italic;
+  margin-top: 14px;
+  line-height: 1.55;
+}
+
+/* ===== BONUS STACK ===== */
+.bonus {
+  margin-top: 26px;
+  background: rgba(201,168,76,0.06);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius);
+  padding: 22px 22px 18px;
+}
+.bonus-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  text-align: center;
+  margin-bottom: 14px;
+}
+.bonus-item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+.bonus-item:last-of-type { border-bottom: none; }
+.bonus-hash { font-family: var(--font-mono); font-size: 12px; color: var(--teal-bright); flex-shrink: 0; }
+.bonus-name { color: var(--text-sub); flex: 1; line-height: 1.4; }
+.bonus-val { font-family: var(--font-mono); font-size: 13px; color: var(--text-dim); flex-shrink: 0; }
+.bonus-total {
+  text-align: center;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--border-gold);
+  font-size: 14px;
+  color: var(--mist);
+  line-height: 1.5;
+}
+.bonus-total strong { color: var(--gold-bright); font-family: var(--font-mono); }
+
+/* ===== EBOOK STRIP ===== */
+.ebook-strip {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 16px;
+  background: rgba(30,51,82,0.35);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+}
+.ebook-strip img { width: 150px; border-radius: 8px; flex-shrink: 0; }
+.ebook-strip .ebook-txt { font-size: 14px; color: var(--text-sub); line-height: 1.55; }
+.ebook-strip .ebook-txt strong { color: var(--white); display: block; margin-bottom: 4px; }
+.ebook-strip .ebook-txt .tier { color: var(--gold-bright); font-family: var(--font-mono); font-size: 12px; display: inline-block; margin-top: 4px; }
+
+/* ===== INSTRUCTOR STRIP ===== */
+.instructor {
+  max-width: 560px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px;
+  background: rgba(30,51,82,0.3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.instructor-photo {
+  width: 84px; height: 84px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border-gold);
+  flex-shrink: 0;
+}
+.instructor-txt { font-size: 14px; color: var(--text-sub); line-height: 1.6; }
+.instructor-txt strong { color: var(--white); font-weight: 600; }
+
+/* ===== TRUST + FOOTER ===== */
+.trust {
+  margin: 36px 0 18px;
+  padding: 26px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.trust-grid { display: flex; justify-content: center; gap: 26px; flex-wrap: wrap; }
+.trust-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--text-sub);
+  font-family: var(--font-mono);
+}
+.trust-icon {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: rgba(26,158,143,0.15);
+  border: 1px solid var(--teal);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: var(--teal-bright); flex-shrink: 0;
+}
+.footer-note {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-dim);
+  padding: 16px 20px 44px;
+  font-family: var(--font-mono);
+}
+
+/* ===== PROMO BOX (Mid-Year — removable layer) ===== */
+.promo-box {
+  margin-top: 24px;
+  background: linear-gradient(135deg, rgba(26,158,143,0.2), rgba(34,197,179,0.06));
+  border: 1px solid var(--teal);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0 0 36px rgba(26,158,143,0.22);
+}
+.promo-box-tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--teal-bright);
+}
+.promo-box-text { font-size: 14.5px; color: var(--mist); line-height: 1.6; }
+.promo-box-text strong { color: var(--white); font-weight: 600; }
+
+/* ===== VALUE ANCHORS ===== */
+.plan-anchor {
+  font-size: 12.5px;
+  margin-bottom: 14px;
+  line-height: 1.5;
+  font-family: var(--font-mono);
+}
+.plan-anchor .strike { text-decoration: line-through; color: var(--text-dim); }
+.plan-anchor .save { color: var(--teal-bright); font-weight: 600; }
+.wf-value {
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--text-sub);
+  margin-bottom: 22px;
+}
+.wf-value strong { color: var(--gold-bright); font-family: var(--font-mono); }
+
+/* ===== PRODUCT SESSION HEAD ===== */
+.product-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 4px 0 22px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-gold);
+}
+.product-num {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+  background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+  width: 36px; height: 36px;
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.product-kicker {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--teal-bright);
+  margin-bottom: 2px;
+}
+.product-title {
+  font-size: clamp(21px, 4vw, 27px);
+  color: var(--white);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+/* ===== SUBHEAD (within session) ===== */
+.subhead {
+  text-align: center;
+  font-size: clamp(19px, 3.5vw, 24px);
+  color: var(--white);
+  font-weight: 700;
+  margin: 34px 0 20px;
+  letter-spacing: -0.01em;
+}
+.subhead span { color: var(--gold-bright); }
+
+/* ===== EBOOK CARD ===== */
+.ebook-card {
+  background: rgba(30,51,82,0.4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+.ebook-card .eb-title { font-size: 17px; color: var(--white); font-weight: 600; margin-bottom: 6px; }
+.ebook-card .eb-intro { font-size: 14.5px; color: var(--text-sub); line-height: 1.6; margin-bottom: 16px; }
+.ebook-card .eb-list { list-style: none; margin-bottom: 18px; }
+.ebook-card .eb-list li {
+  font-size: 14.5px; color: var(--text-sub);
+  padding: 6px 0 6px 28px; position: relative; line-height: 1.5;
+}
+.ebook-card .eb-list li::before {
+  content: '✓'; position: absolute; left: 0; top: 6px;
+  color: var(--teal-bright); font-weight: 700;
+}
+.ebook-card .eb-list li.free { color: var(--gold-bright); }
+.ebook-card .eb-list li.free::before { content: '🎁'; top: 5px; }
+.ebook-card .eb-img {
+  border-radius: var(--radius); overflow: hidden; margin-bottom: 16px;
+  border: 1px solid var(--border);
+}
+.ebook-card .eb-img img { width: 100%; display: block; }
+.ebook-card .eb-price {
+  text-align: center; font-family: var(--font-mono); font-size: 13.5px;
+  color: var(--text-sub); padding-top: 14px; border-top: 1px dashed var(--border-gold);
+}
+.ebook-card .eb-price .normal { text-decoration: line-through; color: var(--text-dim); }
+.ebook-card .eb-price strong { color: var(--gold-bright); }
+
+/* ===== LIVE SESSIONS ===== */
+.sessions-wrap { margin: 6px 0 26px; }
+.sessions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 560px) { .sessions { grid-template-columns: 1fr 1fr; } }
+.session-card {
+  background: rgba(30,51,82,0.4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+}
+.session-card.main {
+  border-color: var(--gold);
+  background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(30,51,82,0.3));
+}
+.session-step {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--teal-bright);
+  margin-bottom: 8px;
+}
+.session-card.main .session-step { color: var(--gold-bright); }
+.session-date {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 2px;
+}
+.session-name {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--gold-bright);
+  margin-bottom: 6px;
+}
+.session-desc { font-size: 13px; color: var(--text-sub); line-height: 1.5; }
+.sessions-note {
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--text-sub);
+  margin-top: 12px;
+  font-family: var(--font-mono);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .hero { padding: 38px 0 24px; }
+  .mech-card { padding: 22px 16px; }
+  .plan { padding: 22px 18px; }
+  .plan-price { font-size: 30px; }
+  .plan-featured .plan-price { font-size: 34px; }
+  .trust-grid { gap: 16px; }
+  .instructor { flex-direction: column; text-align: center; gap: 14px; }
+  .ebook-strip { flex-direction: column; text-align: center; }
+  .ebook-strip img { width: 130px; }
+  .level-detail { padding-left: 18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- =========================================
+     PROMO STRIP · Mid-Year — ลบ block นี้เมื่อหมดโปร 30 มิ.ย.
+     ========================================= -->
+<div class="promo-strip">
+  <div class="promo-strip-inner">
+    <span class="dot"></span>
+    <span>MID-YEAR SPECIAL · แพ็กคู่ Workflow รับ PTM Lite ไม่มีวันหมดอายุ · ถึง 30 มิ.ย. 2026</span>
+  </div>
+</div>
+
+<!-- =========================================
+     HERO
+     ========================================= -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">PTM LITE × AI WORKFLOW</div>
+    <h1 class="hero-title">
+      เครื่องมือช่วย <span>อ่านเทรนด์</span><br>
+      + ระบบ <span>คิดด้วย AI</span>
+    </h1>
+    <p class="hero-sub">
+      <strong>PTM Lite</strong> ช่วยให้คุณ "เห็น" จังหวะตลาดบน TradingView —
+      <strong>AI Workflow</strong> ช่วยให้คุณ "คิด วางแผน เช็กความเสี่ยง และทบทวน" อย่างเป็นระบบ.
+      เครื่องมือที่เห็นจังหวะ + ระบบที่ช่วยคิด ทำงานเข้าคู่กัน
+    </p>
+
+    <!-- ============================================================
+         PROMO LAYER · Mid-Year — ลบทั้ง block นี้เมื่อหมดโปร 30 มิ.ย.
+         (เพจจะกลับเป็น evergreen อัตโนมัติ)
+         ============================================================ -->
+    <div class="promo-box">
+      <div class="promo-box-tag">⏳ MID-YEAR SPECIAL · ถึง 30 มิ.ย. 2026 เท่านั้น</div>
+      <div class="promo-box-text">
+        รอบนี้จับคู่ <strong>PTM Lite + AI Workflow</strong> ในราคาพิเศษ —
+        แพ็กคู่รับ <strong>PTM Lite แบบไม่มีวันหมดอายุ</strong> หลังจากนี้กลับเป็นแบบรายปี
+      </div>
+    </div>
+    <!-- ===== END PROMO LAYER ===== -->
+  </div>
+</section>
+
+<!-- =========================================
+     MECHANISM
+     ========================================= -->
+<section class="section">
+  <div class="container">
+    <div class="product-head">
+      <span class="product-num">01</span>
+      <div>
+        <div class="product-kicker">เครื่องมือ · เห็นจังหวะตลาด</div>
+        <h2 class="product-title">PTM Lite</h2>
+      </div>
+    </div>
+    <div class="section-head">
+      <span class="label">กลไกการทำงาน</span>
+      <h2 class="section-title">EMA Ribbon เปลี่ยน = <span>สัญญาณ Trend Change</span></h2>
+    </div>
+    <div class="mech-card">
+      <div class="chart-wrap">
+        <img src="assets/ptm-lite-chart.png" alt="PTM Lite Indicator — EMA Ribbon และสัญญาณ Trend Change บน TradingView">
+      </div>
+      <div class="chart-caption">— ตัวอย่างหน้าจอจริง: EMA Ribbon เปลี่ยน + Status Panel อ่าน HA Trend —</div>
+      <div class="integrity">
+        <strong>สัญญาณเป็นทางเลือก ไม่ใช่คำสั่ง Buy/Sell</strong> —
+        PTM Lite ช่วยให้เห็นเทรนด์หลักและจังหวะกลับตัวชัดขึ้น แต่การตัดสินใจเข้า-ออกอยู่ที่เทรดเดอร์เสมอ
+        นี่คือเหตุผลที่มันทำงานเข้าคู่กับ Workflow การใช้ AI ช่วยคิด ไม่ใช่ทำนายแทน
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     PTM LITE FEATURES (ต่อจาก session 01)
+     ========================================= -->
+<section class="section">
+  <div class="container">
+    <div class="benefits-label">PTM Lite ทำอะไรได้บ้าง</div>
+    <div class="benefits">
+      <div class="benefit">
+        <div class="benefit-icon">🎨</div>
+        <div class="benefit-text">
+          <strong>พื้นหลังบอกเทรนด์</strong>
+          HA Background ฟ้า = ขาขึ้น · แดง = ขาลง อ่านทิศตลาดได้ในสายตาเดียว
+        </div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">🎯</div>
+        <div class="benefit-text">
+          <strong>สัญญาณ BUY/SELL + ตัวกรอง</strong>
+          EMA Trend Filter + ระบบกัน whipsaw ลดสัญญาณหลอกช่วงตลาดสะบัด
+        </div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">🌈</div>
+        <div class="benefit-text">
+          <strong>EMA Ribbon Fill</strong>
+          เห็นโครงสร้างเทรนด์ชัด + ประหยัดช่อง indicator (คนใช้ TradingView ฟรีก็พอ)
+        </div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">📋</div>
+        <div class="benefit-text">
+          <strong>Info Panel มุมจอ</strong>
+          สรุป HA Trend · Bars Since Flip · Price vs EMA · EMA Slope แบบเรียลไทม์
+        </div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">🔔</div>
+        <div class="benefit-text">
+          <strong>Alert เข้ามือถือ</strong>
+          แจ้งเตือน BUY/SELL ผ่าน popup และแอป TradingView ไม่ต้องเฝ้าจอ
+        </div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">🌐</div>
+        <div class="benefit-text">
+          <strong>ทุกตลาด ทุก Timeframe</strong>
+          Forex ทอง คริปโต หุ้น ดัชนี · Invite-only ติดตั้งครั้งเดียว ไม่ต้องวางโค้ด
+        </div>
+      </div>
+    </div>
+    <div class="integrity">
+      <strong>ได้ทุก Option:</strong> Indicator + คู่มือ 22 หน้า (รวมวิธีอ่าน HA Trend จากศูนย์ + 5 ข้อควรระวัง + Checklist ก่อนเทรด)
+      + Zoom สอนสด 19 ก.ค. 2026 พร้อม recording ดูซ้ำได้ — เพราะ <strong>สัญญาณเป็นทางเลือก ไม่ใช่คำสั่ง Buy/Sell</strong>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     WHAT IS AI WORKFLOW (4 levels)
+     ========================================= -->
+<section class="section">
+  <div class="container">
+    <div class="product-head">
+      <span class="product-num">02</span>
+      <div>
+        <div class="product-kicker">ระบบคิด · ใช้ AI อย่างมีกระบวนการ</div>
+        <h2 class="product-title">AI Workflow Trader Program</h2>
+      </div>
+    </div>
+    <div class="section-head">
+      <span class="label">รวมอยู่ในแพ็กคู่ (Option 2–3)</span>
+      <h2 class="section-title">กรอบ 4 ระดับ <span>การใช้ AI เทรด</span></h2>
+    </div>
+
+    <div class="wf-cover">
+      <img src="assets/ai-workflow-trader-cover.png" alt="AI Workflow Trader Program — กรอบ 4 ระดับการใช้ AI ของเทรดเดอร์">
+    </div>
+
+    <p class="wf-intro">
+      ไม่ใช่แค่แจก Prompt — แต่สอน "กระบวนการ" ใช้ AI ช่วยคิด วางแผน และทบทวนการเทรดอย่างเป็นระบบ
+      ผ่านกรอบ 4 ระดับ (กดเพื่อดูรายละเอียดแต่ละระดับ)
+    </p>
+
+    <p class="wf-value">AI Workflow Trader Program · มูลค่าเดี่ยว <strong>฿1,290</strong> — Live สอนสด 2 ครั้ง + recording ดูซ้ำตลอดชีพ</p>
+
+    <div class="sessions-wrap">
+      <div class="benefits-label">สอนสด 2 ครั้ง · คนละวัน</div>
+      <div class="sessions">
+        <div class="session-card">
+          <div class="session-step">ครั้งที่ 1 · ปูพื้น</div>
+          <div class="session-date">5 ก.ค. 2026</div>
+          <div class="session-name">AI 101 for Beginners</div>
+          <div class="session-desc">ปูพื้นการใช้ AI สำหรับเทรดเดอร์ตั้งแต่ศูนย์ — คนไม่เคยใช้ AI ก็เริ่มได้</div>
+        </div>
+        <div class="session-card main">
+          <div class="session-step">ครั้งที่ 2 · ลงมือจริง</div>
+          <div class="session-date">12 ก.ค. 2026</div>
+          <div class="session-name">Workshop หลัก</div>
+          <div class="session-desc">ลงมือวาง AI Trading Workflow เต็มกระบวนการ + ตัวอย่าง Vibe Coding</div>
+        </div>
+      </div>
+      <div class="sessions-note">🎥 ทั้ง 2 วันมี recording ดูซ้ำได้ตลอดชีพ — เรียนสดไม่ทันก็ดูย้อนหลังได้</div>
+    </div>
+
+    <details class="acc level">
+      <summary>
+        <span class="level-num">01</span>
+        <span class="level-head">
+          <span class="level-name">Foundation · AI Assistant</span>
+          <span class="level-headline">ถาม-ตอบ สรุปข้อมูล อธิบายสิ่งที่ไม่เข้าใจ</span>
+        </span>
+      </summary>
+      <div class="level-detail">
+        ใช้ AI เป็นผู้ช่วยพื้นฐาน — สรุปข่าวและบทความยาว ๆ อธิบายศัพท์หรือคอนเซ็ปต์ที่ไม่เข้าใจ
+        เป็นจุดเริ่มที่ทุกคนเริ่มได้ทันที แต่ยังไม่ใช่ระบบ
+      </div>
+    </details>
+
+    <details class="acc level core" open>
+      <summary>
+        <span class="level-num">02</span>
+        <span class="level-head">
+          <span class="level-name">Integration · AI Trading Workflow</span>
+          <span class="level-headline">สแกนตลาด → วาง Trade Plan → ทบทวน Journal เป็นระบบ</span>
+        </span>
+      </summary>
+      <div class="level-detail">
+        หัวใจของคอร์ส — ใช้ AI เป็นกระบวนการต่อเนื่อง: สแกนภาพรวมตลาดก่อนเทรด วาง Trade Plan ให้ชัด
+        เช็กเหตุผลและ Bias ก่อนเข้าออเดอร์ แล้วทบทวน Trade Journal หลังเทรด ไม่ใช่ถาม AI เป็นครั้ง ๆ แบบไร้ระบบ
+      </div>
+    </details>
+
+    <details class="acc level">
+      <summary>
+        <span class="level-num">03</span>
+        <span class="level-head">
+          <span class="level-name">Optimization · AI Tool Builder</span>
+          <span class="level-headline">ใช้ AI สร้าง Template / Checklist / Excel / Dashboard เอง</span>
+        </span>
+      </summary>
+      <div class="level-detail">
+        ใช้ AI ช่วยสร้างเครื่องมือของตัวเองผ่านตัวอย่าง Vibe Coding —
+        Template, Checklist, Excel, Dashboard หรือเครื่องมือเล็ก ๆ ใช้เองได้ แม้เขียนโค้ดไม่เป็น
+      </div>
+    </details>
+
+    <details class="acc level">
+      <summary>
+        <span class="level-num">04</span>
+        <span class="level-head">
+          <span class="level-name">Autonomy · AI Trading System</span>
+          <span class="level-headline">เชื่อมข้อมูล เครื่องมือ และกระบวนการเทรดเข้าด้วยกัน</span>
+        </span>
+      </summary>
+      <div class="level-detail">
+        ภาพปลายทาง — ต่อยอดสู่ระบบที่เชื่อมข้อมูล เครื่องมือ และกระบวนการเทรดเข้าด้วยกัน
+        คอร์สพาเห็นภาพระดับนี้เพื่อให้รู้ว่าจะพัฒนาต่อไปทางไหน
+      </div>
+    </details>
+
+    <div class="wf-core-note">คอร์สวางฐานที่ Level 2 เป็นแกนหลัก และพาเห็นภาพต่อยอดสู่ Level 3 ผ่านตัวอย่าง Vibe Coding</div>
+
+    <!-- Bonus Stack -->
+    <div class="bonus">
+      <div class="bonus-label">🎁 Bonus Stack — ได้ฟรีในแพ็กคู่</div>
+      <div class="bonus-item"><span class="bonus-hash">#1</span><span class="bonus-name">AI Workflow Blueprint PDF</span><span class="bonus-val">฿590</span></div>
+      <div class="bonus-item"><span class="bonus-hash">#2</span><span class="bonus-name">Trader Prompt Pack — 40 prompts + Notion</span><span class="bonus-val">฿690</span></div>
+      <div class="bonus-item"><span class="bonus-hash">#3</span><span class="bonus-name">Trading System Templates — 5 ไฟล์ Excel</span><span class="bonus-val">฿990</span></div>
+      <div class="bonus-item"><span class="bonus-hash">#4</span><span class="bonus-name">Line OpenChat Support Group</span><span class="bonus-val">฿490</span></div>
+      <div class="bonus-item"><span class="bonus-hash">#5</span><span class="bonus-name">Q&A Session Recording</span><span class="bonus-val">฿590</span></div>
+      <div class="bonus-item"><span class="bonus-hash">#6</span><span class="bonus-name">Surprise Chart Analysis Tool 🔮 (เฉพาะผู้เข้า Live สด)</span><span class="bonus-val">฿490</span></div>
+      <div class="bonus-total">รวม Bonus Stack มูลค่า <strong>฿3,840</strong> — มากกว่าค่าแพ็กคู่ทั้งแพ็ก</div>
+    </div>
+
+    <!-- ทำไมต้องใช้คู่กัน (ย้ายมาไว้ใต้ AI Workflow) -->
+    <div class="subhead">ทำไมต้องใช้ <span>คู่กัน</span></div>
+    <div class="split">
+      <div class="half tool">
+        <span class="half-tag">เห็นตลาด</span>
+        <h3>PTM Lite</h3>
+        <p>เครื่องมือบน TradingView ช่วยกรองเทรนด์หลัก โมเมนตัม และจุดเปลี่ยนแนวโน้ม ให้อ่านกราฟได้เร็วและมีกรอบขึ้น</p>
+      </div>
+      <div class="half flow">
+        <span class="half-tag">คิดเป็นระบบ</span>
+        <h3>AI Workflow</h3>
+        <p>กระบวนการใช้ AI ช่วยสแกนตลาด วาง Trade Plan เช็ก Bias และความเสี่ยง แล้วทบทวน Journal อย่างเป็นระบบ</p>
+      </div>
+    </div>
+    <div class="split-join">เห็นจังหวะ → คิดให้รอบด้าน → ตัดสินใจด้วยตัวเอง</div>
+
+  </div>
+</section>
+
+<!-- =========================================
+     SESSION 03: EBOOK
+     ========================================= -->
+<section class="section">
+  <div class="container">
+    <div class="product-head">
+      <span class="product-num">03</span>
+      <div>
+        <div class="product-kicker">ความรู้พื้นฐาน · เฉพาะชุดครบ</div>
+        <h2 class="product-title">eBook 2 เล่ม</h2>
+      </div>
+    </div>
+
+    <div class="ebook-card">
+      <div class="eb-title">📘 E-Book AI ช่วยลงทุน</div>
+      <p class="eb-intro">คู่มือสำหรับนักลงทุนที่อยากใช้ AI ให้ได้ผลจริง ไม่ใช่แค่ทดลองเล่น</p>
+      <ul class="eb-list">
+        <li>E-Book "อย่าใช้ AI ช่วยลงทุน ถ้ายังไม่อ่านเล่มนี้"</li>
+        <li>Prompt Pack สายลงทุน 32 ชุด พร้อมใช้</li>
+        <li class="free">Bonus E-Book "Wall Street รออยู่ฯ" ฉบับเต็ม (แถมฟรี)</li>
+      </ul>
+      <div class="eb-img">
+        <img src="assets/ebook-x2.png" alt="eBook อย่าใช้ AI ช่วยลงทุน + Wall Street รออยู่ฯ">
+      </div>
+      <div class="eb-price">ปกติ <span class="normal">฿490</span> · รวมอยู่ในชุดครบ <strong>฿2,480</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     PRICING — 3 OPTIONS
+     ========================================= -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">เลือกแบบที่ใช่</span>
+      <h2 class="section-title">3 ทางเลือก · ราคา <span>Mid-Year</span></h2>
+    </div>
+
+    <div class="plans">
+
+      <!-- Option 1: PTM Lite standalone -->
+      <div class="plan">
+        <div class="plan-name">PTM Lite</div>
+        <div class="plan-price-row">
+          <span class="plan-price">฿1,290</span>
+          <span class="plan-unit">เครื่องมือเดี่ยว</span>
+        </div>
+        <span class="plan-license lic-year">⏱ ใช้ได้ 1 ปี · ต่ออายุ 490/ปี</span>
+        <ul class="plan-list">
+          <li>PTM Lite Indicator บน TradingView</li>
+          <li>คู่มือ + Mini eBook (HA Guide)</li>
+          <li>Zoom สอนสด 19 ก.ค. + recording</li>
+        </ul>
+        <a href="https://buy.stripe.com/3cI00jdJlerI1Ra6JI5EY0n" class="plan-cta cta-outline"
+           onclick="fbq('track','InitiateCheckout',{value:1290,currency:'THB',content_ids:['ptm_lite'],content_type:'product',content_name:'PTM Lite'})">
+          เลือก PTM Lite — ฿1,290
+        </a>
+      </div>
+
+      <!-- Option 2: + AI Workflow (FEATURED) -->
+      <div class="plan plan-featured">
+        <div class="plan-name">PTM Lite <span class="plus">+ AI Workflow</span></div>
+        <div class="plan-price-row">
+          <span class="plan-price">฿2,180</span>
+          <span class="plan-unit">เครื่องมือ + ระบบคิด</span>
+        </div>
+        <span class="plan-license lic-life">♾ PTM Lite ไม่มีวันหมดอายุ</span>
+        <div class="plan-anchor"><span class="strike">ซื้อแยก ฿2,580</span> · <span class="save">ประหยัด ฿400 + ได้ Lifetime</span></div>
+        <ul class="plan-list">
+          <li>ทุกอย่างใน PTM Lite</li>
+          <li class="add">คอร์ส AI Workflow Trader (Live + recording ตลอดชีพ)</li>
+          <li class="add">Bonus Stack: Prompt Pack + Excel Templates + Blueprint</li>
+        </ul>
+        <a href="https://buy.stripe.com/fZu3cvdJl5VccvO0lk5EY0o" class="plan-cta cta-gold"
+           onclick="fbq('track','InitiateCheckout',{value:2180,currency:'THB',content_ids:['ptm_lite_workflow'],content_type:'product',content_name:'PTM Lite + AI Workflow'})">
+          เลือกแพ็กคู่ — ฿2,180
+        </a>
+      </div>
+
+      <!-- Option 3: + eBook 2 เล่ม -->
+      <div class="plan">
+        <div class="plan-name">PTM Lite <span class="plus">+ AI Workflow + eBook</span></div>
+        <div class="plan-price-row">
+          <span class="plan-price">฿2,480</span>
+          <span class="plan-unit">ชุดครบ</span>
+        </div>
+        <span class="plan-license lic-life">♾ PTM Lite ไม่มีวันหมดอายุ</span>
+        <div class="plan-anchor"><span class="strike">ซื้อแยก ฿3,070</span> · <span class="save">ประหยัด ฿590 + ได้ Lifetime</span></div>
+        <ul class="plan-list">
+          <li>ทุกอย่างในแพ็กคู่</li>
+          <li class="add">eBook "อย่าใช้ AI ช่วยลงทุน" + "Wall Street รออยู่ฯ"</li>
+          <li class="add">Investor Prompt Pack (Notion)</li>
+        </ul>
+        <a href="https://buy.stripe.com/28EfZh5cP3N4fI01po5EY0p" class="plan-cta cta-outline"
+           onclick="fbq('track','InitiateCheckout',{value:2480,currency:'THB',content_ids:['ptm_lite_full'],content_type:'product',content_name:'PTM Lite + AI Workflow + eBook'})">
+          เลือกชุดครบ — ฿2,480
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Lifetime honesty note -->
+    <div class="life-note">
+      <strong>เรื่อง "ไม่มีวันหมดอายุ":</strong>
+      PTM Lite แบบ Lifetime มีเฉพาะแพ็กคู่ Workflow (Option 2–3) ในรอบ Mid-Year ถึง 30 มิ.ย. 2026 เท่านั้น —
+      หลังจากนั้นทุกแบบกลับเป็นแบบรายปี (ต่ออายุ 490 บาท/ปี). ใครซื้อแพ็กคู่ในรอบนี้ ได้สิทธิ์ Lifetime ถาวร ไม่มีค่าต่ออายุ.
+      <span class="addon">
+        ซื้อ AI Workflow ไปแล้ว? เพิ่ม PTM Lite Lifetime ได้ในราคาพิเศษ <strong>+990 บาท</strong> (ถึง 30 มิ.ย.) —
+        ทักไลน์ <a href="https://lin.ee/Wp36lIA">@516ipohw</a> เพื่อรับลิงก์
+      </span>
+    </div>
+
+    <!-- Full Stack — thin exit option only -->
+    <div class="fullstack-line">
+      อยากได้ครบทุกผลิตภัณฑ์ รวม <strong>PTM + OI</strong> ด้วย? มีแพ็ก <strong>Mid-Year Trader Full Stack ฿5,900</strong> (รับ 10 ชุด) — <a href="https://lin.ee/Wp36lIA">ทักไลน์ถามรายละเอียด →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================================
+     INSTRUCTOR
+     ========================================= -->
+<section class="section">
+  <div class="container">
+    <div class="instructor">
+      <img class="instructor-photo" src="assets/aj-mai.jpg" alt="อ.ใหม่ ธนภัทร ธนิชานนท์">
+      <div class="instructor-txt">
+        <strong>อ.ใหม่ ธนภัทร ธนิชานนท์</strong> — ประสบการณ์ 15 ปีในวงการการเงินการลงทุน
+        ผู้สอนหลักสูตรเตรียมสอบใบอนุญาต IC / CFP กว่า 10,000 คน · เจ้าของระบบเทรด PTM
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     FAQ
+     ========================================= -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">คำถามที่พบบ่อย</h2>
+    </div>
+    <div class="faq">
+      <details class="acc faq-acc">
+        <summary>PTM Lite ใช้กับตลาดไหนได้บ้าง?</summary>
+        <div class="faq-a">ใช้ได้ทุกตลาดและทุก timeframe ที่อยู่บน TradingView — หุ้นไทย/เทศ ทอง คริปโต ฟอเร็กซ์ ฟิวเจอร์ส</div>
+      </details>
+      <details class="acc faq-acc">
+        <summary>"ไม่มีวันหมดอายุ" ต่างจากรายปียังไง?</summary>
+        <div class="faq-a">แบบรายปีใช้ได้ 1 ปีแล้วต่ออายุ <strong>490 บาท/ปี</strong>. แบบ Lifetime (เฉพาะแพ็กคู่ Workflow รอบ Mid-Year) ใช้ได้ต่อเนื่องไม่ต้องต่ออายุ</div>
+      </details>
+      <details class="acc faq-acc">
+        <summary>ได้รับของเมื่อไหร่?</summary>
+        <div class="faq-a">หลังชำระเงินจะได้ลิงก์กรอกฟอร์ม TradingView username → ส่ง indicator + คู่มือทางอีเมลภายใน <strong>1–3 วันทำการ</strong>. คอร์ส AI Workflow เข้าเรียน Live + ได้ recording ดูซ้ำตลอดชีพ</div>
+      </details>
+      <details class="acc faq-acc">
+        <summary>PTM Lite บอก Buy/Sell ให้เลยไหม?</summary>
+        <div class="faq-a">ไม่ใช่ — เป็นเครื่องมือช่วยอ่านเทรนด์และจังหวะ ไม่ใช่สัญญาณซื้อขายอัตโนมัติ การตัดสินใจอยู่ที่เทรดเดอร์เสมอ</div>
+      </details>
+      <details class="acc faq-acc">
+        <summary>จ่ายเงินยังไง?</summary>
+        <div class="faq-a">ชำระผ่าน Stripe (บัตรเครดิต/เดบิต หรือพร้อมเพย์). ถ้าจ่ายไม่ได้ ทักไลน์ <a href="https://lin.ee/Wp36lIA">@516ipohw</a> ได้เลย</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     TRUST + FOOTER
+     ========================================= -->
+<div class="container">
+  <div class="trust">
+    <div class="trust-grid">
+      <div class="trust-item"><span class="trust-icon">✓</span>ชำระผ่าน Stripe ปลอดภัย</div>
+      <div class="trust-item"><span class="trust-icon">✓</span>ลิงก์ส่งทางอีเมลหลังชำระ</div>
+      <div class="trust-item"><span class="trust-icon">✓</span>Indicator ส่งใน 1–3 วันทำการ</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-note">
+  PTM Lite × AI Workflow Trader · Mid-Year Special 2569 · อ.ใหม่ ธนภัทร ธนิชานนท์
+</div>
+
+</body>
+</html>
