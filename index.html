@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <title>PTM Lite + AI Workflow — Mid-Year Special</title>
-<meta name="description" content="PTM Lite เครื่องมือช่วยอ่านเทรนด์บน TradingView + ระบบคิดด้วย AI — รอบ Mid-Year ถึง 30 มิ.ย. 2026 แพ็กคู่ Workflow รับ PTM Lite แบบไม่มีวันหมดอายุ">
+<meta name="description" content="PTM Lite เครื่องมือช่วยอ่านเทรนด์บน TradingView + ระบบคิดด้วย AI — รอบ Mid-Year ถึง 3 ก.ค. 2026 แพ็กคู่ Workflow รับ PTM Lite แบบไม่มีวันหมดอายุ">
 
 <!-- =========================================================
      TODO ก่อน publish (verify ทีละตัว — ห้าม assume / ห้ามก๊อปลิงก์ bump เดิม):
-     1. assets/ptm-lite-chart.png  → วางไฟล์รูปใน assets/ ข้าง index.html
+     1. assets/ptm-01-anatomy.png / ptm-02-good-trend-vs-sideway.png / ptm-03-entry-checklist.png / ptm-04-ai-workflow.png → วางไฟล์รูปใน assets/ ข้าง index.html
      2. https://buy.stripe.com/3cI00jdJlerI1Ra6JI5EY0n   → ลิงก์ใหม่ standalone 1,290 (license 1 ปี)
      3. https://buy.stripe.com/fZu3cvdJl5VccvO0lk5EY0o    → ลิงก์ +workflow 2,180 (LIFETIME) — fulfillment ใหม่ อย่าใช้ลิงก์ PL2 เดิม
      4. https://buy.stripe.com/28EfZh5cP3N4fI01po5EY0p      → ลิงก์ +workflow+ebook 2,480 (LIFETIME) — อย่าใช้ลิงก์ bJe...0l เดิม
@@ -461,10 +461,17 @@ body > * { position: relative; z-index: 1; }
   border: 1px dashed var(--border-gold);
   border-radius: var(--radius);
   padding: 18px 20px;
-  font-size: 13.5px;
+  font-size: 14px;
   line-height: 1.65;
   color: var(--text-sub);
 }
+.life-note-title {
+  display: block;
+  color: var(--gold-bright);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.life-note p + p { margin-top: 8px; }
 .life-note strong { color: var(--gold-bright); font-weight: 600; }
 .life-note .addon {
   display: block;
@@ -475,25 +482,19 @@ body > * { position: relative; z-index: 1; }
 }
 .life-note .addon a { color: var(--teal-bright); border-bottom: 1px solid rgba(34,197,179,0.4); }
 
-/* ===== FULL STACK — thin exit line ===== */
-.fullstack-line {
-  max-width: 560px;
-  margin: 22px auto 0;
-  text-align: center;
-  font-size: 13.5px;
-  color: var(--text-sub);
-  line-height: 1.6;
-  padding: 16px 22px;
-  border: 1px dashed var(--border);
-  border-radius: var(--radius);
-}
-.fullstack-line strong { color: var(--mist); font-weight: 600; }
-.fullstack-line a { color: var(--teal-bright); border-bottom: 1px solid rgba(34,197,179,0.4); white-space: nowrap; }
-
 /* ===== FAQ (accordion) ===== */
 .faq { max-width: 620px; margin: 0 auto; }
+.faq-intro {
+  max-width: 560px;
+  margin: -10px auto 22px;
+  text-align: center;
+  font-size: 14.5px;
+  color: var(--text-sub);
+  line-height: 1.65;
+}
 .faq-acc summary { font-size: 15.5px; color: var(--white); font-weight: 600; line-height: 1.45; }
 .faq-acc .faq-a { padding: 2px 18px 16px 18px; font-size: 14.5px; color: var(--text-sub); line-height: 1.6; }
+.faq-acc .faq-a p + p { margin-top: 8px; }
 .faq-acc .faq-a strong { color: var(--mist); }
 .faq-acc .faq-a a { color: var(--teal-bright); }
 
@@ -524,6 +525,10 @@ body > * { position: relative; z-index: 1; }
 }
 .acc[open] summary::after { content: '\2212'; }
 .acc summary:focus-visible { outline: 2px solid var(--teal-bright); outline-offset: 2px; }
+
+
+.visual-stack.single { margin-top: 22px; }
+.visual-stack.single .visual-card { width: 100%; }
 
 /* ===== WORKFLOW SECTION ===== */
 .wf-cover {
@@ -657,7 +662,7 @@ body > * { position: relative; z-index: 1; }
   flex-shrink: 0;
 }
 .instructor-txt { font-size: 14px; color: var(--text-sub); line-height: 1.6; }
-.instructor-txt strong { color: var(--white); font-weight: 600; }
+.instructor-txt strong { display: block; color: var(--white); font-weight: 600; margin-bottom: 4px; }
 
 /* ===== TRUST + FOOTER ===== */
 .trust {
@@ -855,6 +860,120 @@ body > * { position: relative; z-index: 1; }
   font-family: var(--font-mono);
 }
 
+
+/* ===== VISUAL SHOWCASE ===== */
+.visual-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 24px;
+}
+.visual-card {
+  background: linear-gradient(180deg, rgba(30,51,82,0.45), rgba(30,51,82,0.22));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.24);
+}
+.visual-card.gold {
+  border-color: var(--border-gold);
+  background: linear-gradient(180deg, rgba(201,168,76,0.08), rgba(30,51,82,0.24));
+}
+.visual-img {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.32);
+  margin-bottom: 14px;
+}
+.visual-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.visual-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+.visual-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.35;
+}
+.visual-tag {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--teal-bright);
+}
+.visual-desc {
+  font-size: 14.5px;
+  color: var(--text-sub);
+  line-height: 1.6;
+}
+.visual-desc strong { color: var(--mist); font-weight: 600; }
+
+/* ===== HA BONUS ===== */
+.ha-bonus {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(201,168,76,0.10), rgba(30,51,82,0.34));
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  box-shadow: 0 14px 42px rgba(0,0,0,0.26);
+}
+@media (min-width: 640px) {
+  .ha-bonus { grid-template-columns: 190px 1fr; }
+}
+.ha-cover {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-gold);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.34);
+  max-width: 190px;
+  margin: 0 auto;
+}
+.ha-cover img { width: 100%; height: auto; display: block; }
+.ha-copy .ha-kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  margin-bottom: 8px;
+}
+.ha-copy h3 {
+  font-size: 20px;
+  color: var(--white);
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 8px;
+}
+.ha-copy p {
+  font-size: 14.5px;
+  color: var(--text-sub);
+  line-height: 1.65;
+}
+.ha-copy p + p { margin-top: 8px; }
+.ha-copy p strong { color: var(--mist); font-weight: 600; }
+.ha-note {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--teal-bright);
+  line-height: 1.55;
+}
+
 /* ===== MOBILE ===== */
 @media (max-width: 640px) {
   body { font-size: 16px; }
@@ -874,12 +993,12 @@ body > * { position: relative; z-index: 1; }
 <body>
 
 <!-- =========================================
-     PROMO STRIP · Mid-Year — ลบ block นี้เมื่อหมดโปร 30 มิ.ย.
+     PROMO STRIP · Mid-Year — ลบ block นี้เมื่อหมดโปร 3 ก.ค.
      ========================================= -->
 <div class="promo-strip">
   <div class="promo-strip-inner">
     <span class="dot"></span>
-    <span>MID-YEAR SPECIAL · แพ็กคู่ Workflow รับ PTM Lite ไม่มีวันหมดอายุ · ถึง 30 มิ.ย. 2026</span>
+    <span>MID-YEAR SPECIAL · แพ็กคู่ Workflow รับ PTM Lite ไม่มีวันหมดอายุ · ถึง 3 ก.ค. 2026</span>
   </div>
 </div>
 
@@ -900,11 +1019,11 @@ body > * { position: relative; z-index: 1; }
     </p>
 
     <!-- ============================================================
-         PROMO LAYER · Mid-Year — ลบทั้ง block นี้เมื่อหมดโปร 30 มิ.ย.
+         PROMO LAYER · Mid-Year — ลบทั้ง block นี้เมื่อหมดโปร 3 ก.ค.
          (เพจจะกลับเป็น evergreen อัตโนมัติ)
          ============================================================ -->
     <div class="promo-box">
-      <div class="promo-box-tag">⏳ MID-YEAR SPECIAL · ถึง 30 มิ.ย. 2026 เท่านั้น</div>
+      <div class="promo-box-tag">⏳ MID-YEAR SPECIAL · ถึง 3 ก.ค. 2026 เท่านั้น</div>
       <div class="promo-box-text">
         รอบนี้จับคู่ <strong>PTM Lite + AI Workflow</strong> ในราคาพิเศษ —
         แพ็กคู่รับ <strong>PTM Lite แบบไม่มีวันหมดอายุ</strong> หลังจากนี้กลับเป็นแบบรายปี
@@ -927,18 +1046,18 @@ body > * { position: relative; z-index: 1; }
       </div>
     </div>
     <div class="section-head">
-      <span class="label">กลไกการทำงาน</span>
-      <h2 class="section-title">EMA Ribbon เปลี่ยน = <span>สัญญาณ Trend Change</span></h2>
+      <span class="label">Visual Guide</span>
+      <h2 class="section-title">PTM Lite ช่วยให้คุณ <span>เห็นอะไรบนกราฟ</span></h2>
     </div>
     <div class="mech-card">
       <div class="chart-wrap">
-        <img src="assets/ptm-lite-chart.png" alt="PTM Lite Indicator — EMA Ribbon และสัญญาณ Trend Change บน TradingView">
+        <img src="assets/ptm-01-anatomy.png" alt="PTM Lite ช่วยให้คุณเห็นอะไรบนกราฟ — HA Background, EMA Ribbon, Buy/Sell Label, Info Panel และ Alert">
       </div>
-      <div class="chart-caption">— ตัวอย่างหน้าจอจริง: EMA Ribbon เปลี่ยน + Status Panel อ่าน HA Trend —</div>
+      <div class="chart-caption">— HA Background · EMA Ribbon · Buy/Sell Label · Info Panel · Alert —</div>
       <div class="integrity">
-        <strong>สัญญาณเป็นทางเลือก ไม่ใช่คำสั่ง Buy/Sell</strong> —
-        PTM Lite ช่วยให้เห็นเทรนด์หลักและจังหวะกลับตัวชัดขึ้น แต่การตัดสินใจเข้า-ออกอยู่ที่เทรดเดอร์เสมอ
-        นี่คือเหตุผลที่มันทำงานเข้าคู่กับ Workflow การใช้ AI ช่วยคิด ไม่ใช่ทำนายแทน
+        <strong>PTM Lite ไม่ได้มีแค่ป้าย Buy/Sell</strong> —
+        แต่ช่วยให้คุณเห็นทิศทางตลาด โครงสร้างเทรนด์ จุดที่ควรกลับมาดู และตั้ง Alert ได้ในกราฟเดียว
+        เพื่อให้การอ่านกราฟมีระบบมากขึ้นก่อนเข้าสู่ขั้นตอนคัดกรองและวางแผนเทรด
       </div>
     </div>
   </div>
@@ -997,6 +1116,50 @@ body > * { position: relative; z-index: 1; }
     <div class="integrity">
       <strong>ได้ทุก Option:</strong> Indicator + คู่มือ 22 หน้า (รวมวิธีอ่าน HA Trend จากศูนย์ + 5 ข้อควรระวัง + Checklist ก่อนเทรด)
       + Zoom สอนสด 19 ก.ค. 2026 พร้อม recording ดูซ้ำได้ — เพราะ <strong>สัญญาณเป็นทางเลือก ไม่ใช่คำสั่ง Buy/Sell</strong>
+    </div>
+
+    <div class="ha-bonus">
+      <div class="ha-cover">
+        <img src="assets/ebook-ha-cover.png" alt="eBook เทรดเป็นระบบด้วย Heikin Ashi">
+      </div>
+      <div class="ha-copy">
+        <div class="ha-kicker">BONUS สำหรับผู้สมัคร PTM LITE รอบนี้</div>
+        <h3>รับ eBook “เทรดเป็นระบบด้วย Heikin Ashi”</h3>
+        <p>
+          คู่มือเสริมที่จะช่วยให้คุณใช้ PTM Lite อย่างเข้าใจมากขึ้น — ตั้งแต่การอ่านเทรนด์ด้วย HA,
+          แยกกราฟที่ควรเทรด / ควรระวัง, รอจังหวะ pullback และวาง SL / TP กับ RR ก่อนเข้าเทรด
+        </p>
+        <p>
+          เป้าหมายไม่ใช่ให้กดตามป้าย Buy / Sell ทันที แต่ช่วยให้คุณอ่านบริบทของสัญญาณได้เป็นระบบมากขึ้น
+        </p>
+        <div class="ha-note">หมายเหตุ: Bonus eBook เล่มนี้จะเปิดให้ดาวน์โหลดได้ภายในวันที่ 15 ก.ค. 2026 โดยจะแจ้งลิงก์ให้ผู้สมัครตามช่องทางที่ลงทะเบียนไว้</div>
+      </div>
+    </div>
+
+    <div class="subhead">จากการอ่านกราฟ → <span>คัดกรองจังหวะเข้าเทรด</span></div>
+    <div class="visual-stack">
+      <div class="visual-card">
+        <div class="visual-img">
+          <img src="assets/ptm-02-good-trend-vs-sideway.png" alt="Good Trend vs Sideway — PTM Lite">
+        </div>
+        <div class="visual-meta">
+          <div class="visual-title">Good Trend vs Sideway</div>
+          <div class="visual-tag">Trend Filter</div>
+        </div>
+        <p class="visual-desc">ช่วยแยก <strong>กราฟที่ควรเทรด</strong> ออกจากช่วงตลาดที่ควรระวัง เพื่อไม่ให้กดทุกสัญญาณโดยไม่ดูบริบท</p>
+      </div>
+
+      <div class="visual-card">
+        <div class="visual-img">
+          <img src="assets/ptm-03-entry-checklist.png" alt="Entry Checklist ก่อนเข้าเทรด">
+        </div>
+        <div class="visual-meta">
+          <div class="visual-title">Entry Checklist ก่อนเข้าเทรด</div>
+          <div class="visual-tag">Trade Plan</div>
+        </div>
+        <p class="visual-desc">เช็กทิศทางตลาด, EMA Alignment, Entry Signal, SL/TP และ RR ไม่ต่ำกว่า 1:1 ก่อนตัดสินใจเข้าเทรด</p>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1134,6 +1297,19 @@ body > * { position: relative; z-index: 1; }
     </div>
     <div class="split-join">เห็นจังหวะ → คิดให้รอบด้าน → ตัดสินใจด้วยตัวเอง</div>
 
+    <div class="visual-stack single">
+      <div class="visual-card gold">
+        <div class="visual-img">
+          <img src="assets/ptm-04-ai-workflow.png" alt="PTM Lite × AI Workflow — ระบบใช้เครื่องมือและ AI ทำงานร่วมกัน">
+        </div>
+        <div class="visual-meta">
+          <div class="visual-title">PTM Lite × AI Workflow</div>
+          <div class="visual-tag">System Flow</div>
+        </div>
+        <p class="visual-desc"><strong>PTM Lite</strong> ช่วยให้เห็นจังหวะบนกราฟ ส่วน <strong>AI Workflow</strong> ช่วยเช็กแผน ความเสี่ยง และทบทวนผลหลังเทรดอย่างเป็นระบบ</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1188,12 +1364,12 @@ body > * { position: relative; z-index: 1; }
         <span class="plan-license lic-year">⏱ ใช้ได้ 1 ปี · ต่ออายุ 490/ปี</span>
         <ul class="plan-list">
           <li>PTM Lite Indicator บน TradingView</li>
-          <li>คู่มือ + Mini eBook (HA Guide)</li>
+          <li>คู่มือ PTM Lite + Bonus eBook “เทรดเป็นระบบด้วย Heikin Ashi”</li>
           <li>Zoom สอนสด 19 ก.ค. + recording</li>
         </ul>
         <a href="https://buy.stripe.com/3cI00jdJlerI1Ra6JI5EY0n" class="plan-cta cta-outline"
            onclick="fbq('track','InitiateCheckout',{value:1290,currency:'THB',content_ids:['ptm_lite'],content_type:'product',content_name:'PTM Lite'})">
-          เลือก PTM Lite — ฿1,290
+          Option 1 · เลือก PTM Lite — ฿1,290
         </a>
       </div>
 
@@ -1213,7 +1389,7 @@ body > * { position: relative; z-index: 1; }
         </ul>
         <a href="https://buy.stripe.com/fZu3cvdJl5VccvO0lk5EY0o" class="plan-cta cta-gold"
            onclick="fbq('track','InitiateCheckout',{value:2180,currency:'THB',content_ids:['ptm_lite_workflow'],content_type:'product',content_name:'PTM Lite + AI Workflow'})">
-          เลือกแพ็กคู่ — ฿2,180
+          Option 2 · เลือกแพ็กคู่ — ฿2,180
         </a>
       </div>
 
@@ -1233,7 +1409,7 @@ body > * { position: relative; z-index: 1; }
         </ul>
         <a href="https://buy.stripe.com/28EfZh5cP3N4fI01po5EY0p" class="plan-cta cta-outline"
            onclick="fbq('track','InitiateCheckout',{value:2480,currency:'THB',content_ids:['ptm_lite_full'],content_type:'product',content_name:'PTM Lite + AI Workflow + eBook'})">
-          เลือกชุดครบ — ฿2,480
+          Option 3 · เลือกชุดครบ — ฿2,480
         </a>
       </div>
 
@@ -1241,18 +1417,21 @@ body > * { position: relative; z-index: 1; }
 
     <!-- Lifetime honesty note -->
     <div class="life-note">
-      <strong>เรื่อง "ไม่มีวันหมดอายุ":</strong>
-      PTM Lite แบบ Lifetime มีเฉพาะแพ็กคู่ Workflow (Option 2–3) ในรอบ Mid-Year ถึง 30 มิ.ย. 2026 เท่านั้น —
-      หลังจากนั้นทุกแบบกลับเป็นแบบรายปี (ต่ออายุ 490 บาท/ปี). ใครซื้อแพ็กคู่ในรอบนี้ ได้สิทธิ์ Lifetime ถาวร ไม่มีค่าต่ออายุ.
+      <span class="life-note-title">เรื่อง “ไม่มีวันหมดอายุ”</span>
+      <p>
+        สิทธิ์ PTM Lite แบบ Lifetime มีเฉพาะแพ็กคู่ Workflow <strong>Option 2–3</strong>
+        ในรอบ Mid-Year ถึงวันที่ <strong>3 ก.ค. 2026</strong> เท่านั้น
+      </p>
+      <p>
+        ถ้าซื้อในรอบนี้ คุณใช้ PTM Lite ต่อได้ยาว ๆ โดยไม่มีค่าต่ออายุ
+        ส่วนหลังจบรอบโปร ทุก Option จะกลับไปเป็นสิทธิ์รายปี
+        <strong>ต่ออายุ 490 บาท/ปี</strong>
+      </p>
       <span class="addon">
-        ซื้อ AI Workflow ไปแล้ว? เพิ่ม PTM Lite Lifetime ได้ในราคาพิเศษ <strong>+990 บาท</strong> (ถึง 30 มิ.ย.) —
-        ทักไลน์ <a href="https://lin.ee/Wp36lIA">@516ipohw</a> เพื่อรับลิงก์
+        เคยซื้อ AI Workflow ไปแล้ว? สามารถเพิ่ม PTM Lite Lifetime ได้ในราคาพิเศษ
+        <strong>+990 บาท</strong> ถึงวันที่ 3 ก.ค. 2026 —
+        ทักไลน์ <a href="https://lin.ee/Wp36lIA">@516ipohw</a> เพื่อรับลิงก์เฉพาะ
       </span>
-    </div>
-
-    <!-- Full Stack — thin exit option only -->
-    <div class="fullstack-line">
-      อยากได้ครบทุกผลิตภัณฑ์ รวม <strong>PTM + OI</strong> ด้วย? มีแพ็ก <strong>Mid-Year Trader Full Stack ฿5,900</strong> (รับ 10 ชุด) — <a href="https://lin.ee/Wp36lIA">ทักไลน์ถามรายละเอียด →</a>
     </div>
 
   </div>
@@ -1266,8 +1445,9 @@ body > * { position: relative; z-index: 1; }
     <div class="instructor">
       <img class="instructor-photo" src="assets/aj-mai.jpg" alt="อ.ใหม่ ธนภัทร ธนิชานนท์">
       <div class="instructor-txt">
-        <strong>อ.ใหม่ ธนภัทร ธนิชานนท์</strong> — ประสบการณ์ 15 ปีในวงการการเงินการลงทุน
-        ผู้สอนหลักสูตรเตรียมสอบใบอนุญาต IC / CFP กว่า 10,000 คน · เจ้าของระบบเทรด PTM
+        <strong>อ.ใหม่ ธนภัทร ธนิชานนท์</strong>
+        ประสบการณ์ 15 ปีในวงการการเงินการลงทุน ผู้สอนหลักสูตรเตรียมสอบใบอนุญาต IC / CFP
+        ให้ผู้เรียนมากกว่า 10,000 คน และผู้ออกแบบระบบเทรด PTM
       </div>
     </div>
   </div>
@@ -1281,26 +1461,68 @@ body > * { position: relative; z-index: 1; }
     <div class="section-head">
       <h2 class="section-title">คำถามที่พบบ่อย</h2>
     </div>
+    <p class="faq-intro">
+      รวมคำถามหลักก่อนตัดสินใจสมัคร ทั้งเรื่องการใช้งาน PTM Lite, สิทธิ์ Lifetime,
+      การรับสินค้า และวิธีชำระเงิน
+    </p>
     <div class="faq">
       <details class="acc faq-acc">
         <summary>PTM Lite ใช้กับตลาดไหนได้บ้าง?</summary>
-        <div class="faq-a">ใช้ได้ทุกตลาดและทุก timeframe ที่อยู่บน TradingView — หุ้นไทย/เทศ ทอง คริปโต ฟอเร็กซ์ ฟิวเจอร์ส</div>
+        <div class="faq-a">
+          <p>
+            ใช้ได้กับทุกตลาดและทุก Timeframe ที่เปิดกราฟบน TradingView ได้ เช่น หุ้นไทย หุ้นต่างประเทศ
+            ทอง คริปโต ฟอเร็กซ์ และฟิวเจอร์ส
+          </p>
+        </div>
       </details>
       <details class="acc faq-acc">
-        <summary>"ไม่มีวันหมดอายุ" ต่างจากรายปียังไง?</summary>
-        <div class="faq-a">แบบรายปีใช้ได้ 1 ปีแล้วต่ออายุ <strong>490 บาท/ปี</strong>. แบบ Lifetime (เฉพาะแพ็กคู่ Workflow รอบ Mid-Year) ใช้ได้ต่อเนื่องไม่ต้องต่ออายุ</div>
+        <summary>“ไม่มีวันหมดอายุ” ต่างจากแบบรายปียังไง?</summary>
+        <div class="faq-a">
+          <p>
+            แบบรายปีใช้ได้ 1 ปี และต่ออายุในราคา <strong>490 บาท/ปี</strong>
+          </p>
+          <p>
+            ส่วนแบบ Lifetime ใช้ได้ต่อเนื่องโดยไม่มีค่าต่ออายุ แต่สิทธิ์นี้มีเฉพาะแพ็กคู่ Workflow
+            <strong>Option 2–3</strong> ในรอบ Mid-Year นี้เท่านั้น
+          </p>
+        </div>
       </details>
       <details class="acc faq-acc">
-        <summary>ได้รับของเมื่อไหร่?</summary>
-        <div class="faq-a">หลังชำระเงินจะได้ลิงก์กรอกฟอร์ม TradingView username → ส่ง indicator + คู่มือทางอีเมลภายใน <strong>1–3 วันทำการ</strong>. คอร์ส AI Workflow เข้าเรียน Live + ได้ recording ดูซ้ำตลอดชีพ</div>
+        <summary>หลังชำระเงินแล้วจะได้รับอะไร และเมื่อไหร่?</summary>
+        <div class="faq-a">
+          <p>
+            หลังชำระเงิน คุณจะได้รับลิงก์สำหรับกรอก TradingView username เพื่อให้ทีมเพิ่มสิทธิ์ใช้งาน Indicator
+          </p>
+          <p>
+            Indicator และคู่มือจะส่งทางอีเมลภายใน <strong>1–3 วันทำการ</strong>
+            ส่วนคอร์ส AI Workflow จะเข้าเรียน Live ได้ตามวันสอน และมี Recording ให้ดูซ้ำตลอดชีพ
+          </p>
+        </div>
       </details>
       <details class="acc faq-acc">
-        <summary>PTM Lite บอก Buy/Sell ให้เลยไหม?</summary>
-        <div class="faq-a">ไม่ใช่ — เป็นเครื่องมือช่วยอ่านเทรนด์และจังหวะ ไม่ใช่สัญญาณซื้อขายอัตโนมัติ การตัดสินใจอยู่ที่เทรดเดอร์เสมอ</div>
+        <summary>PTM Lite เป็นระบบกดตาม Buy/Sell ได้เลยไหม?</summary>
+        <div class="faq-a">
+          <p>
+            ไม่ใช่ครับ PTM Lite เป็นเครื่องมือช่วยอ่านเทรนด์ จังหวะ และบริบทของกราฟ
+            ไม่ใช่ระบบซื้อขายอัตโนมัติหรือคำสั่งให้เข้าออเดอร์ทันที
+          </p>
+          <p>
+            แนวคิดของเครื่องมือนี้คือช่วยให้คุณมีข้อมูลประกอบการตัดสินใจมากขึ้น
+            ส่วนการเข้าเทรดจริงยังต้องดูแผน ความเสี่ยง และบริบทตลาดของตัวเองเสมอ
+          </p>
+        </div>
       </details>
       <details class="acc faq-acc">
-        <summary>จ่ายเงินยังไง?</summary>
-        <div class="faq-a">ชำระผ่าน Stripe (บัตรเครดิต/เดบิต หรือพร้อมเพย์). ถ้าจ่ายไม่ได้ ทักไลน์ <a href="https://lin.ee/Wp36lIA">@516ipohw</a> ได้เลย</div>
+        <summary>ชำระเงินได้ทางไหนบ้าง?</summary>
+        <div class="faq-a">
+          <p>
+            ชำระผ่าน Stripe ได้ทั้งบัตรเครดิต/เดบิต และพร้อมเพย์
+          </p>
+          <p>
+            ถ้ากดชำระไม่สำเร็จ หรืออยากให้ทีมช่วยเช็ก Option ที่เหมาะกับคุณ
+            ทักไลน์ <a href="https://lin.ee/Wp36lIA">@516ipohw</a> ได้เลย
+          </p>
+        </div>
       </details>
     </div>
   </div>
@@ -1313,14 +1535,14 @@ body > * { position: relative; z-index: 1; }
   <div class="trust">
     <div class="trust-grid">
       <div class="trust-item"><span class="trust-icon">✓</span>ชำระผ่าน Stripe ปลอดภัย</div>
-      <div class="trust-item"><span class="trust-icon">✓</span>ลิงก์ส่งทางอีเมลหลังชำระ</div>
-      <div class="trust-item"><span class="trust-icon">✓</span>Indicator ส่งใน 1–3 วันทำการ</div>
+      <div class="trust-item"><span class="trust-icon">✓</span>ส่งรายละเอียดทางอีเมลหลังชำระ</div>
+      <div class="trust-item"><span class="trust-icon">✓</span>เพิ่มสิทธิ์ Indicator ใน 1–3 วันทำการ</div>
     </div>
   </div>
 </div>
 
 <div class="footer-note">
-  PTM Lite × AI Workflow Trader · Mid-Year Special 2569 · อ.ใหม่ ธนภัทร ธนิชานนท์
+  PTM Lite × AI Workflow Trader · Mid-Year Special 2026 · อ.ใหม่ ธนภัทร ธนิชานนท์
 </div>
 
 </body>
